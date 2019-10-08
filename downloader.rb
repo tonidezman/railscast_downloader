@@ -30,7 +30,6 @@ class Downloader
       open(file_path, "wb") do |file|
         file.print open(url).read
       end
-      return
     end
 
     Capybara.current_session.driver.quit
