@@ -2,16 +2,18 @@ require 'open-uri'
 require 'capybara'
 require 'pry'
 
+BASE_URL        = "http://railscasts.com/"
+DOWNLOAD_FOLDER = "/Users/tonidezman/Desktop/RailsCasts/"
+
 class Downloader
   def self.start
     capybara_configuration
-    base_url = "http://railscasts.com/"
     browser  = Capybara.current_session
 
     video_links = []
-    all_pages = (1..48)
-    all_pages.each do |page|
-      browser.visit("#{base_url}?page=#{page}")
+    pages = (1..48)
+    pages.each do |page|
+      browser.visit("#{BASE_URL}?page=#{page}")
       browser.find_all(".pretty_button").each.with_index do |a_tag, i|
         video_links << a_tag[:href] if i.odd?
       end
@@ -24,7 +26,7 @@ class Downloader
       url = browser.current_url
       browser.go_back
 
-      file_path = "/Users/tonidezman/Desktop/RailsCasts/#{file_name}.mp4"
+      file_path = "#{DOWNLOAD_FOLDER}#{file_name}.mp4"
       open(file_path, "wb") do |file|
         file.print open(url).read
       end
