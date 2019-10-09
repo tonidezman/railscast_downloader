@@ -2,9 +2,9 @@
 
 2. You need to have Firefox installed.
 
-3. Open terminal:
-- install ruby 2.6.1 or just change latest ruby version in the Gem file
-- install all the gems/packages with
+3. Open the terminal:
+- install ruby 2.6.1 or change ruby ruby version in the Gem file to the latest Ruby version
+- install all the dependencies by running
 ```bash
 $ bundle install
 ```
